@@ -5,13 +5,41 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pink & Red Theme Website</title>
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Pacifico&display=swap" rel="stylesheet">
 </head>
 <body class="pink-theme">
-    <div class="container">
-        <h1>Welcome!</h1>
-        <p>This is a simple website with pink and red themes.</p>
+    <div id="heart-container"></div>
+    
+    <div class="container" id="question-container">
+        <h1 id="question-text">Loading...</h1>
+        <div class="button-group">
+            <button id="his-btn">Joey</button>
+            <button id="her-btn">Brinleigh</button>
+        </div>
+    </div>
+
+    <div class="container hidden" id="final-container">
+        <h1>No matter what you choose, I choose you ❤️</h1>
+        <button id="reveal-surprise-btn">reveal suprise</button>
+    </div>
+
+    <div class="container hidden" id="surprise-container">
+        <h1>Surprise! 🌹</h1>
+        <p>Would you like to go to dinner at Olive Garden wearing our fancy&trade; clothes on 4/20/2026?</p>
+        <div class="button-group" id="date-buttons">
+            <button id="yes-btn">Yes</button>
+            <button id="no-btn">No</button>
+        </div>
+    </div>
+
+    <div class="container hidden" id="success-container">
+        <h1 class="fancy-font">Hell yeah 🥂</h1>
+    </div>
+
+    <div class="theme-toggle-container">
         <button id="theme-toggle">Switch to Red Theme</button>
     </div>
+
     <script src="script.js"></script>
 </body>
 </html>
