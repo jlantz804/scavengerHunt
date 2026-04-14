@@ -17,10 +17,13 @@ const questions = [
 
 let currentQuestionIndex = 0;
 let noClickCount = 0;
+let successHeartInterval = null;
 
 const questionText = document.getElementById('question-text');
 const hisBtn = document.getElementById('his-btn');
 const herBtn = document.getElementById('her-btn');
+const skipBtn = document.getElementById('skip-btn');
+const resetBtn = document.getElementById('reset-btn');
 const questionContainer = document.getElementById('question-container');
 const finalContainer = document.getElementById('final-container');
 const surpriseContainer = document.getElementById('surprise-container');
@@ -72,12 +75,16 @@ function showQuestion() {
 function handleAnswer() {
     currentQuestionIndex++;
     showQuestion();
-    // Burst of hearts on answer
     for(let i=0; i<5; i++) createHeart();
 }
 
 hisBtn.addEventListener('click', handleAnswer);
 herBtn.addEventListener('click', handleAnswer);
+
+skipBtn.addEventListener('click', () => {
+    currentQuestionIndex = questions.length;
+    showQuestion();
+});
 
 revealSurpriseBtn.addEventListener('click', () => {
     finalContainer.classList.add('hidden');
@@ -87,30 +94,48 @@ revealSurpriseBtn.addEventListener('click', () => {
 yesBtn.addEventListener('click', () => {
     surpriseContainer.classList.add('hidden');
     successContainer.classList.remove('hidden');
-    // Massive heart burst
-    setInterval(createHeart, 50);
+    if (!successHeartInterval) {
+        successHeartInterval = setInterval(createHeart, 50);
+    }
 });
 
 noBtn.addEventListener('click', () => {
     noClickCount++;
-    
     const randomText = noTexts[Math.floor(Math.random() * noTexts.length)];
     noBtn.textContent = randomText;
 
     if (noClickCount <= 3) {
         const yesScale = 1 + (noClickCount * 0.5);
         const noScale = 1 - (noClickCount * 0.2);
-        
         yesBtn.style.transform = `scale(${yesScale})`;
         noBtn.style.transform = `scale(${noScale})`;
     } else {
         const x = Math.random() * (window.innerWidth - noBtn.offsetWidth);
         const y = Math.random() * (window.innerHeight - noBtn.offsetHeight);
-        
         noBtn.style.position = 'fixed';
         noBtn.style.left = `${x}px`;
         noBtn.style.top = `${y}px`;
     }
+});
+
+resetBtn.addEventListener('click', () => {
+    currentQuestionIndex = 0;
+    noClickCount = 0;
+    if (successHeartInterval) {
+        clearInterval(successHeartInterval);
+        successHeartInterval = null;
+    }
+    
+    // Reset buttons
+    yesBtn.style.transform = 'scale(1)';
+    noBtn.style.transform = 'scale(1)';
+    noBtn.style.position = 'static';
+    noBtn.textContent = 'No';
+    
+    // Switch containers
+    successContainer.classList.add('hidden');
+    questionContainer.classList.remove('hidden');
+    showQuestion();
 });
 
 themeToggle.addEventListener('click', () => {
