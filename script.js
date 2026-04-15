@@ -17,7 +17,7 @@ const questions = [
     "Official review of Boyfriend (short answer)",
     "Final notes for Boyfriend (short answer)"
 ];
-
+//updated questions array to include short answer questions at the end, and removed the "overall rating" question since it was redundant with the final verdict.
 let currentQuestionIndex = 0;
 let ratings = [];
 let noClickCount = 0;
