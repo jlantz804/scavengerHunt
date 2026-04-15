@@ -32,11 +32,19 @@
             <div class="section-label">SECTION I: QUANTITATIVE ASSESSMENT</div>
             <h2 id="question-text">INITIALIZING ASSESSMENT...</h2>
             <div class="rating-group">
-                <p>Assign performance rating for current criterion:</p>
-                <div class="button-group">
-                    <button class="rate-btn" data-score="1">1 - Needs Improvement</button>
-                    <button class="rate-btn" data-score="2">2 - Satisfactory</button>
-                    <button class="rate-btn" data-score="3">3 - Exceptional</button>
+                <div id="score-buttons">
+                    <p>Assign performance rating for current criterion:</p>
+                    <div class="button-group">
+                        <button class="rate-btn" data-score="1">1 - Needs Improvement</button>
+                        <button class="rate-btn" data-score="2">2 - Satisfactory</button>
+                        <button class="rate-btn" data-score="3">3 - Exceptional</button>
+                    </div>
+                </div>
+                <div id="short-answer-container" class="hidden">
+                    <p>Provide detailed assessment:</p>
+                    <textarea id="short-answer-input" rows="4" cols="40" placeholder="ENTER EVALUATION HERE..."></textarea>
+                    <br>
+                    <button id="submit-short-answer-btn">SUBMIT ENTRY</button>
                 </div>
             </div>
         </div>
@@ -51,9 +59,9 @@
 
         <div class="container hidden" id="surprise-container">
             <div class="section-label">SECTION III: MANDATORY DIRECTIVE</div>
-            <h1>DIRECTIVE: DINNER ENGAGEMENT</h1>
-            <p>YOU ARE HEREBY SUMMONED TO DINNER AT OLIVE GARDEN ON 4/20/2026.</p>
-            <p>PROTOCOL: FORMAL/FANCY&trade; ATTIRE IS MANDATORY.</p>
+            <h1>DIRECTIVE: RANDOM BULLSHIT</h1>
+            <p>YOU ARE HEREBY SUMMONED TO PARTICIPATE IN SOME RANDOM BULLSHIT AT AN UNDISCLOSED LOCATION.</p>
+            <p>PROTOCOL: BRING YOUR OWN BEVERAGE AND A SENSE OF ADVENTURE.</p>
             <div class="button-group" id="date-buttons">
                 <button id="yes-btn">ACKNOWLEDGE & COMPLY</button>
                 <button id="no-btn">DECLINE (NON-COMPLIANCE)</button>

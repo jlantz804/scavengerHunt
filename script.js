@@ -1,18 +1,21 @@
 const questions = [
-    "Likelihood to be late",
-    "Driving competency",
-    "Stubbornness coefficient",
-    "Sleep onset speed",
-    "Proactivity in verbal affection",
-    "Culinary performance",
-    "Argument initiation frequency",
-    "Sickness-related fragility",
-    "Organizational aptitude",
-    "Financial expenditure rate",
-    "Adventurous spirit",
-    "Musical taste compatibility",
-    "Navigation and spatial awareness",
-    "Romantic gesture frequency"
+    "Financial Support?",
+    "Driving skills?",
+    "Passenger Princess skills?",
+    "Frequency of flowers?",
+    "Frequency of affection?",
+    "Frequency of head/sex?",
+    "Quality of flowers?",
+    "Quality of affection?",
+    "Quality of head/sex?",
+    "Mood?",
+    "Emotional Support?",
+    "Playlist quality?",
+    "Does he notice the small things?",
+    "Does he notice the big things?",
+    "Does he notice things?",
+    "Official review of Boyfriend (short answer)",
+    "Final notes for Boyfriend (short answer)"
 ];
 
 let currentQuestionIndex = 0;
@@ -30,9 +33,24 @@ const yesBtn = document.getElementById('yes-btn');
 const noBtn = document.getElementById('no-btn');
 const resetBtn = document.getElementById('reset-btn');
 
+const scoreButtons = document.getElementById('score-buttons');
+const shortAnswerContainer = document.getElementById('short-answer-container');
+const shortAnswerInput = document.getElementById('short-answer-input');
+const submitShortAnswerBtn = document.getElementById('submit-short-answer-btn');
+
 function showQuestion() {
     if (currentQuestionIndex < questions.length) {
-        questionText.textContent = `CRITERION ${currentQuestionIndex + 1}: ${questions[currentQuestionIndex]}`;
+        const question = questions[currentQuestionIndex];
+        questionText.textContent = `CRITERION ${currentQuestionIndex + 1}: ${question}`;
+        
+        if (question.includes("(short answer)")) {
+            scoreButtons.classList.add('hidden');
+            shortAnswerContainer.classList.remove('hidden');
+            shortAnswerInput.value = "";
+        } else {
+            scoreButtons.classList.remove('hidden');
+            shortAnswerContainer.classList.add('hidden');
+        }
     } else {
         questionContainer.classList.add('hidden');
         finalContainer.classList.remove('hidden');
@@ -49,6 +67,16 @@ document.querySelectorAll('.rate-btn').forEach(btn => {
         currentQuestionIndex++;
         showQuestion();
     });
+});
+
+submitShortAnswerBtn.addEventListener('click', () => {
+    const answer = shortAnswerInput.value.trim() || "N/A";
+    ratings.push({
+        criterion: questions[currentQuestionIndex],
+        score: answer
+    });
+    currentQuestionIndex++;
+    showQuestion();
 });
 
 generateReportBtn.addEventListener('click', () => {
@@ -69,14 +97,17 @@ function saveReportLocally(status) {
     reportContent += `SUBJECT: JOEY\n`;
     reportContent += `EVALUATOR: BRINLEIGH\n`;
     reportContent += `STATUS: ${status}\n\n`;
-    reportContent += "DETAILED RATINGS:\n";
+    reportContent += "DETAILED ASSESSMENT:\n";
     
     ratings.forEach((r, i) => {
-        reportContent += `${i+1}. ${r.criterion}: ${r.score}/3\n`;
+        const isShortAnswer = r.criterion.includes("(short answer)");
+        const scoreLabel = isShortAnswer ? "RESPONSE" : "RATING";
+        const scoreValue = isShortAnswer ? r.score : `${r.score}/3`;
+        reportContent += `${i+1}. ${r.criterion}\n   ${scoreLabel}: ${scoreValue}\n\n`;
     });
     
-    reportContent += "\nFINAL VERDICT: I CHOOSE YOU ❤️\n";
-    reportContent += "DINNER DIRECTIVE: OLIVE GARDEN 4/20/2026 (FANCY™ ATTIRE)\n";
+    reportContent += "FINAL VERDICT: I CHOOSE YOU ❤️\n";
+    reportContent += "DIRECTIVE: RANDOM BULLSHIT AT AN UNDISCLOSED LOCATION\n";
 
     window.lastReport = reportContent;
 }
