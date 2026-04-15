@@ -3,43 +3,75 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Brinleigh's Surprise Gift</title>
+    <title>Boyfriend Performance Evaluation - Form B-101</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Pacifico&display=swap" rel="stylesheet">
 </head>
-<body class="pink-theme">
-    <div id="heart-container"></div>
+<body class="official-theme">
+    <div class="watermark">CONFIDENTIAL</div>
     
-    <div class="container" id="question-container">
-        <button id="skip-btn" class="corner-btn">Skip</button>
-        <h1 id="question-text">Loading...</h1>
-        <div class="button-group">
-            <button id="his-btn">Joey</button>
-            <button id="her-btn">Brinleigh</button>
+    <div class="doc-container">
+        <header>
+            <div class="header-left">
+                <p>U.S. DEPARTMENT OF BOYFRIEND EVALUATION</p>
+                <p>OFFICE OF ROMANTIC PERFORMANCE STANDARDS</p>
+                <p>WASHINGTON, D.C. 2026</p>
+            </div>
+            <div class="header-right">
+                <p>FORM ID: B-101-REV</p>
+                <p>CASE FILE: #4-20-2026</p>
+            </div>
+        </header>
+
+        <div class="title-block">
+            <h1>OFFICIAL PERFORMANCE EVALUATION REPORT</h1>
+            <p>SUBJECT: JOEY (EMPLOYEE ID: 001)</p>
+            <p>EVALUATOR: BRINLEIGH</p>
         </div>
-    </div>
 
-    <div class="container hidden" id="final-container">
-        <h1>No matter what you choose, I choose you ❤️</h1>
-        <button id="reveal-surprise-btn">reveal suprise</button>
-    </div>
-
-    <div class="container hidden" id="surprise-container">
-        <h1>Surprise! 🌹</h1>
-        <p>Perked up White Boy&trade; busts it down sensual style, is he goated with the sauce?  More at 10pm</p>
-        <div class="button-group" id="date-buttons">
-            <button id="yes-btn">Yes</button>
-            <button id="no-btn">No</button>
+        <div class="container" id="question-container">
+            <div class="section-label">SECTION I: QUANTITATIVE ASSESSMENT</div>
+            <h2 id="question-text">INITIALIZING ASSESSMENT...</h2>
+            <div class="rating-group">
+                <p>Assign performance rating for current criterion:</p>
+                <div class="button-group">
+                    <button class="rate-btn" data-score="1">1 - Needs Improvement</button>
+                    <button class="rate-btn" data-score="2">2 - Satisfactory</button>
+                    <button class="rate-btn" data-score="3">3 - Exceptional</button>
+                </div>
+            </div>
         </div>
-    </div>
 
-    <div class="container hidden" id="success-container">
-        <h1 class="fancy-font">Is that my clicker?</h1>
-        <button id="reset-btn" class="reset-btn">Start Over</button>
-    </div>
+        <div class="container hidden" id="final-container">
+            <div class="section-label">SECTION II: FINAL DETERMINATION</div>
+            <h2>ASSESSMENT COMPLETE</h2>
+            <p>No further choices are required. Determination has been finalized.</p>
+            <p class="official-stamp">FINAL VERDICT: I CHOOSE YOU ❤️</p>
+            <button id="generate-report-btn">GENERATE OFFICIAL REPORT</button>
+        </div>
 
-    <div class="theme-toggle-container">
-        <button id="theme-toggle">Switch to Red Theme</button>
+        <div class="container hidden" id="surprise-container">
+            <div class="section-label">SECTION III: MANDATORY DIRECTIVE</div>
+            <h1>DIRECTIVE: DINNER ENGAGEMENT</h1>
+            <p>YOU ARE HEREBY SUMMONED TO DINNER AT OLIVE GARDEN ON 4/20/2026.</p>
+            <p>PROTOCOL: FORMAL/FANCY&trade; ATTIRE IS MANDATORY.</p>
+            <div class="button-group" id="date-buttons">
+                <button id="yes-btn">ACKNOWLEDGE & COMPLY</button>
+                <button id="no-btn">DECLINE (NON-COMPLIANCE)</button>
+            </div>
+        </div>
+
+        <div class="container hidden" id="success-container">
+            <h1 class="stencil-font">STATUS: CONFIRMED</h1>
+            <p>Response has been logged and stored on local terminal.</p>
+            <button id="download-file-btn">DOWNLOAD OFFICIAL LOG (.TXT)</button>
+            <br>
+            <button id="reset-btn" class="reset-link">RE-INITIALIZE FORM</button>
+        </div>
+
+        <footer>
+            <p>WARNING: Unauthorized access to this document is a violation of Romantic Protocol 84-B.</p>
+            <p>PAGE 1 OF 1</p>
+        </footer>
     </div>
 
     <script src="script.js"></script>

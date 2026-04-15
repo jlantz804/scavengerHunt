@@ -3,197 +3,188 @@
 }
 
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    transition: background-color 0.5s ease, color 0.5s ease;
+    font-family: 'Times New Roman', serif;
+    background-color: #f0f0f0;
+    color: #1a1a1a;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    padding: 2rem 0;
+    position: relative;
+    overflow-x: hidden;
+}
+
+.official-theme {
+    background-color: #e8e8e8;
+}
+
+.doc-container {
+    background-color: white;
+    width: 850px;
+    min-height: 1000px;
+    padding: 4rem;
+    box-shadow: 0 0 20px rgba(0,0,0,0.1);
+    position: relative;
+    border: 1px solid #ccc;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    margin: 0;
-    overflow: hidden;
-    position: relative;
+}
+
+.watermark {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(-45deg);
+    font-size: 8rem;
+    color: rgba(0, 0, 0, 0.05);
+    font-weight: bold;
+    pointer-events: none;
+    z-index: 100;
+    text-transform: uppercase;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 2px solid black;
+    padding-bottom: 1rem;
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+
+.header-left p, .header-right p {
+    margin: 2px 0;
+}
+
+.title-block {
+    text-align: center;
+    margin: 2rem 0;
+    border-bottom: 1px solid #aaa;
+    padding-bottom: 1.5rem;
+}
+
+.title-block h1 {
+    font-size: 1.8rem;
+    letter-spacing: 2px;
+    margin-bottom: 0.5rem;
+}
+
+.section-label {
+    background-color: #333;
+    color: white;
+    display: inline-block;
+    padding: 4px 12px;
+    font-weight: bold;
+    font-size: 0.9rem;
+    margin-bottom: 1.5rem;
 }
 
 .container {
-    text-align: center;
-    padding: 3rem;
-    border-radius: 30px;
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
-    max-width: 80%;
-    width: 600px;
-    position: relative;
-    z-index: 10;
-    backdrop-filter: blur(5px);
-    border: 2px solid rgba(255, 255, 255, 0.3);
+    flex-grow: 1;
+    margin: 1.5rem 0;
+    padding: 1.5rem;
+    border: 1px dashed #aaa;
 }
 
 .hidden {
     display: none;
 }
 
+#question-text {
+    font-size: 1.4rem;
+    margin-bottom: 2rem;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
 .button-group {
     display: flex;
-    gap: 2rem;
-    justify-content: center;
-    margin-top: 2.5rem;
-    flex-wrap: wrap;
+    flex-direction: column;
+    gap: 1rem;
     align-items: center;
-}
-
-/* Pink Theme */
-.pink-theme {
-    background: linear-gradient(135deg, #ffe4e1 0%, #ffc0cb 100%);
-    color: #d81b60;
-}
-
-.pink-theme .container {
-    background-color: rgba(255, 255, 255, 0.85);
-}
-
-.pink-theme button {
-    background: linear-gradient(135deg, #ff69b4 0%, #ff1493 100%);
-    color: white;
-    box-shadow: 0 4px 15px rgba(255, 105, 180, 0.4);
-}
-
-/* Red Theme */
-.red-theme {
-    background: linear-gradient(135deg, #ffcccc 0%, #ff9999 100%);
-    color: #b71c1c;
-}
-
-.red-theme .container {
-    background-color: rgba(255, 255, 255, 0.85);
-}
-
-.red-theme button {
-    background: linear-gradient(135deg, #f44336 0%, #d32f2f 100%);
-    color: white;
-    box-shadow: 0 4px 15px rgba(244, 67, 54, 0.4);
+    margin-top: 2rem;
 }
 
 button {
-    border: none;
-    padding: 15px 35px;
-    border-radius: 50px;
+    font-family: 'Courier New', Courier, monospace;
+    background-color: #fff;
+    border: 2px solid #333;
+    padding: 10px 20px;
     cursor: pointer;
-    font-size: 1.4rem;
     font-weight: bold;
-    transition: transform 0.2s, box-shadow 0.2s, background 0.3s;
+    text-transform: uppercase;
+    transition: all 0.2s;
+    width: 300px;
 }
 
 button:hover {
-    transform: translateY(-3px) scale(1.05);
+    background-color: #333;
+    color: white;
 }
 
-button:active {
-    transform: translateY(0) scale(0.95);
-}
-
-.theme-toggle-container {
-    position: fixed;
-    bottom: 25px;
-    z-index: 100;
-}
-
-#theme-toggle {
-    font-size: 0.9rem;
+.official-stamp {
+    border: 4px solid #b71c1c;
+    color: #b71c1c;
+    display: inline-block;
     padding: 10px 20px;
-    opacity: 0.9;
+    font-size: 1.5rem;
+    font-weight: bold;
+    transform: rotate(-5deg);
+    margin: 2rem 0;
+    text-transform: uppercase;
 }
 
-#question-text {
-    font-size: 3rem;
-    margin-bottom: 1.5rem;
+.stencil-font {
+    font-family: 'Courier New', Courier, monospace;
+    letter-spacing: 4px;
+    background: #000;
+    color: #fff;
+    padding: 10px;
+    display: inline-block;
 }
 
-.corner-btn {
-    position: absolute;
-    top: 15px;
-    right: 15px;
+footer {
+    margin-top: auto;
+    border-top: 1px solid black;
+    padding-top: 1rem;
+    font-size: 0.7rem;
+    display: flex;
+    justify-content: space-between;
+    font-weight: bold;
+}
+
+.reset-link {
+    background: none;
+    border: none;
+    text-decoration: underline;
+    color: blue;
     font-size: 0.8rem;
-    padding: 8px 15px;
-    opacity: 0.6;
+    margin-top: 1rem;
+    width: auto;
 }
 
-.reset-btn {
-    margin-top: 2rem;
-    font-size: 1rem;
-    padding: 10px 25px;
-    opacity: 0.8;
-}
-
-.fancy-font {
-    font-family: 'Great Vibes', cursive;
-    font-size: 7rem;
-    margin: 0;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-/* Floating Hearts */
-#heart-container {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    z-index: 1;
-}
-
-.heart {
-    position: absolute;
-    font-size: 20px;
-    user-select: none;
-    animation: floatUp 4s linear forwards;
-    opacity: 0.8;
-}
-
-@keyframes floatUp {
-    0% {
-        transform: translateY(100vh) rotate(0deg);
-        opacity: 1;
-    }
-    100% {
-        transform: translateY(-10vh) rotate(360deg);
-        opacity: 0;
-    }
+.reset-link:hover {
+    background: none;
+    color: darkblue;
 }
 
 /* Mobile Friendly */
-@media (max-width: 600px) {
-    body {
-        justify-content: flex-start;
-        padding-top: 2rem;
+@media (max-width: 900px) {
+    .doc-container {
+        width: 95%;
+        padding: 1.5rem;
     }
-
-    .container {
-        padding: 2rem 1.5rem;
-        max-width: 90%;
-        width: auto;
-    }
-
-    #question-text {
-        font-size: 2rem;
-    }
-
-    .fancy-font {
+    
+    .watermark {
         font-size: 4rem;
     }
-
-    button {
-        padding: 12px 25px;
-        font-size: 1.1rem;
+    
+    header {
+        flex-direction: column;
+        text-align: center;
     }
-
-    .button-group {
-        gap: 1rem;
-    }
-
-    .corner-btn {
-        top: 10px;
-        right: 10px;
-        padding: 6px 12px;
+    
+    .header-right {
+        margin-top: 10px;
     }
 }
