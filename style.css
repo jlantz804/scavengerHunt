@@ -149,6 +149,46 @@ textarea {
     text-align: center;
 }
 
+#results-summary {
+    text-align: left;
+    margin: 2rem 0;
+    padding: 1rem;
+    background: #f9f9f9;
+    border: 1px solid #333;
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+.results-list {
+    list-style: none;
+    padding: 0;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 0.9rem;
+}
+
+.results-list li {
+    margin-bottom: 0.8rem;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 0.4rem;
+}
+
+.final-verdict {
+    font-weight: bold;
+    color: #b71c1c;
+    font-size: 1.2rem;
+    text-align: center;
+    margin-top: 1.5rem;
+    text-transform: uppercase;
+}
+
+.screenshot-msg {
+    font-weight: bold;
+    background: #ffff00;
+    padding: 10px;
+    border: 2px dashed black;
+    margin: 2rem 0;
+}
+
 .stencil-font {
     font-family: 'Courier New', Courier, monospace;
     letter-spacing: 4px;

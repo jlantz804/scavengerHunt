@@ -28,7 +28,7 @@ const finalContainer = document.getElementById('final-container');
 const surpriseContainer = document.getElementById('surprise-container');
 const successContainer = document.getElementById('success-container');
 const generateReportBtn = document.getElementById('generate-report-btn');
-const downloadFileBtn = document.getElementById('download-file-btn');
+const resultsSummary = document.getElementById('results-summary');
 const yesBtn = document.getElementById('yes-btn');
 const noBtn = document.getElementById('no-btn');
 const resetBtn = document.getElementById('reset-btn');
@@ -87,42 +87,23 @@ generateReportBtn.addEventListener('click', () => {
 yesBtn.addEventListener('click', () => {
     surpriseContainer.classList.add('hidden');
     successContainer.classList.remove('hidden');
-    saveReportLocally("ACCEPTED");
+    displaySummary();
 });
 
-function saveReportLocally(status) {
-    let reportContent = "OFFICIAL BOYFRIEND EVALUATION REPORT\n";
-    reportContent += "====================================\n";
-    reportContent += `DATE: ${new Date().toLocaleString()}\n`;
-    reportContent += `SUBJECT: JOEY\n`;
-    reportContent += `EVALUATOR: BRINLEIGH\n`;
-    reportContent += `STATUS: ${status}\n\n`;
-    reportContent += "DETAILED ASSESSMENT:\n";
+function displaySummary() {
+    let summaryHTML = "<h3>OFFICIAL PERFORMANCE LOG SUMMARY</h3><ul class='results-list'>";
     
     ratings.forEach((r, i) => {
         const isShortAnswer = r.criterion.includes("(short answer)");
-        const scoreLabel = isShortAnswer ? "RESPONSE" : "RATING";
         const scoreValue = isShortAnswer ? r.score : `${r.score}/3`;
-        reportContent += `${i+1}. ${r.criterion}\n   ${scoreLabel}: ${scoreValue}\n\n`;
+        summaryHTML += `<li><strong>${r.criterion}</strong>: ${scoreValue}</li>`;
     });
     
-    reportContent += "FINAL VERDICT: I CHOOSE YOU ❤️\n";
-    reportContent += "DIRECTIVE: RANDOM BULLSHIT AT AN UNDISCLOSED LOCATION\n";
-
-    window.lastReport = reportContent;
+    summaryHTML += "</ul>";
+    summaryHTML += "<p class='final-verdict'>FINAL VERDICT: I CHOOSE YOU ❤️</p>";
+    
+    resultsSummary.innerHTML = summaryHTML;
 }
-
-downloadFileBtn.addEventListener('click', () => {
-    const blob = new Blob([window.lastReport], { type: 'text/plain' });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = `Boyfriend_Evaluation_Joey_${new Date().getTime()}.txt`;
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-    URL.revokeObjectURL(url);
-});
 
 noBtn.addEventListener('click', () => {
     noClickCount++;
