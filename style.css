@@ -170,21 +170,39 @@ button:hover {
 
 .heart-container {
     position: relative;
-    width: 600px;
-    height: 600px;
+    width: 90vw;
+    height: 90vw;
+    max-width: 600px;
+    max-height: 600px;
 }
 
 .heart-text {
     position: absolute;
-    font-size: 0.9rem;
+    font-size: 0.8rem;
     color: #ff69b4;
     text-shadow: 0 0 5px #ff69b4, 0 0 10px #ff69b4;
     white-space: nowrap;
     font-family: 'Special Elite', cursive;
-    /* Heart shape path */
-    offset-path: path('M300,150 C300,50 100,50 100,250 C100,450 300,550 300,550 C300,550 500,450 500,250 C500,50 300,50 300,150');
+    /* Responsive heart shape path using relative coordinates */
+    offset-path: path('M 50,25 C 50,10 20,10 20,40 C 20,70 50,90 50,90 C 50,90 80,70 80,40 C 80,10 50,10 50,25');
+    /* We'll scale the path using a wrapper or simplify the path to use percentages if supported, 
+       but for best compatibility across mobile, we'll use a fixed coordinate system and scale the container */
     offset-rotate: 0deg;
     animation: trace 10s linear infinite;
+}
+
+/* Adjusting the path to be more robust for centering */
+.heart-text {
+    offset-path: path('M 300,150 C 300,50 100,50 100,250 C 100,450 300,550 300,550 C 300,550 500,450 500,250 C 500,50 300,50 300,150');
+}
+
+@media (max-width: 600px) {
+    .heart-container {
+        transform: scale(0.6); /* Scale down the fixed-size coordinate path for mobile */
+    }
+    .heart-text {
+        font-size: 1.2rem; /* Make text larger since container is scaled down */
+    }
 }
 
 @keyframes trace {
