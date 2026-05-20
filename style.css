@@ -67,7 +67,7 @@ header h1 {
     color: #795548;
 }
 
-.clue-box, .success-box, .final-box, .side-quest-box {
+.clue-box, .success-box, .final-box, .side-quest-box, .menu-box {
     flex-grow: 1;
     display: flex;
     flex-direction: column;

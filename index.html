@@ -15,7 +15,32 @@
             <p class="subtitle">Decipher the clues to reveal your next destination</p>
         </header>
 
-        <div class="clue-box" id="clue-container">
+        <div id="start-menu" class="menu-box">
+            <h2>MAIN MENU</h2>
+            <div class="button-group">
+                <button id="new-game-btn">START NEW GAME</button>
+                <button id="continue-game-btn">CONTINUE</button>
+            </div>
+        </div>
+
+        <div id="continue-menu" class="menu-box hidden">
+            <h2>RESUME QUEST</h2>
+            <p>Select your last known location:</p>
+            <div class="button-group">
+                <button class="continue-clue-btn" data-index="0">CLUE #1</button>
+                <button class="continue-clue-btn" data-index="1">CLUE #2</button>
+                <button class="continue-clue-btn" data-index="2">CLUE #3</button>
+            </div>
+            <button id="back-to-menu-btn" class="secondary-btn">BACK</button>
+        </div>
+
+        <div id="instructions-box" class="menu-box hidden">
+            <h2>HOW TO PLAY</h2>
+            <p>Welcome, Explorer! You will be presented with mysterious riddles about locations in Manitowoc. You must guess the correct <strong>word</strong> for the activity or place described to advance to your next destination.</p>
+            <button id="start-hunt-btn">BEGIN ADVENTURE</button>
+        </div>
+
+        <div class="clue-box hidden" id="clue-container">
             <h2 id="clue-title">CLUE #1</h2>
             <p id="clue-text">INITIALIZING QUEST...</p>
             

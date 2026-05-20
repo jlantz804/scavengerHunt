@@ -41,6 +41,27 @@ document.addEventListener('DOMContentLoaded', () => {
     const heartContainer = document.getElementById('heart-container');
     const huntContainer = document.querySelector('.hunt-container');
 
+    // Menu Elements
+    const startMenu = document.getElementById('start-menu');
+    const continueMenu = document.getElementById('continue-menu');
+    const instructionsBox = document.getElementById('instructions-box');
+    const newGameBtn = document.getElementById('new-game-btn');
+    const continueGameBtn = document.getElementById('continue-game-btn');
+    const startHuntBtn = document.getElementById('start-hunt-btn');
+    const backToMenuBtn = document.getElementById('back-to-menu-btn');
+    const continueClueBtns = document.querySelectorAll('.continue-clue-btn');
+
+    function hideAll() {
+        startMenu.classList.add('hidden');
+        continueMenu.classList.add('hidden');
+        instructionsBox.classList.add('hidden');
+        clueContainer.classList.add('hidden');
+        successContainer.classList.add('hidden');
+        sideQuestContainer.classList.add('hidden');
+        finalContainer.classList.add('hidden');
+        heartPage.classList.add('hidden');
+    }
+
     function showClue() {
         if (currentClueIndex < clues.length) {
             const clue = clues[currentClueIndex];
@@ -48,19 +69,42 @@ document.addEventListener('DOMContentLoaded', () => {
             clueText.textContent = clue.riddle;
             answerInput.value = "";
             feedbackMsg.classList.add('hidden');
+            hideAll();
             clueContainer.classList.remove('hidden');
-            successContainer.classList.add('hidden');
-            sideQuestContainer.classList.add('hidden');
-            finalContainer.classList.add('hidden');
-            heartPage.classList.add('hidden');
             huntContainer.classList.remove('hidden');
         } else {
-            clueContainer.classList.add('hidden');
-            successContainer.classList.add('hidden');
-            sideQuestContainer.classList.add('hidden');
+            hideAll();
             finalContainer.classList.remove('hidden');
         }
     }
+
+    // Menu Logic
+    newGameBtn.addEventListener('click', () => {
+        hideAll();
+        instructionsBox.classList.remove('hidden');
+    });
+
+    continueGameBtn.addEventListener('click', () => {
+        hideAll();
+        continueMenu.classList.remove('hidden');
+    });
+
+    startHuntBtn.addEventListener('click', () => {
+        currentClueIndex = 0;
+        showClue();
+    });
+
+    backToMenuBtn.addEventListener('click', () => {
+        hideAll();
+        startMenu.classList.remove('hidden');
+    });
+
+    continueClueBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            currentClueIndex = parseInt(btn.getAttribute('data-index'));
+            showClue();
+        });
+    });
 
     submitBtn.addEventListener('click', () => {
         const userAnswer = answerInput.value.trim().toLowerCase();
@@ -128,5 +172,5 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    showClue();
+    // showClue(); Removed so menu shows first
 });
