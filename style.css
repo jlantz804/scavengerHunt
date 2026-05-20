@@ -67,7 +67,7 @@ header h1 {
     color: #795548;
 }
 
-.clue-box, .success-box, .final-box {
+.clue-box, .success-box, .final-box, .side-quest-box {
     flex-grow: 1;
     display: flex;
     flex-direction: column;
@@ -76,6 +76,11 @@ header h1 {
     border: 1px dashed #8b4513;
     background: rgba(255, 255, 255, 0.1);
     margin-bottom: 2rem;
+}
+
+.alert-title {
+    color: #b71c1c;
+    font-weight: bold;
 }
 
 h2 {

@@ -35,6 +35,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const finalContainer = document.getElementById('final-container');
     const restartBtn = document.getElementById('restart-btn');
     const completeHuntBtn = document.getElementById('complete-hunt-btn');
+    const sideQuestContainer = document.getElementById('side-quest-container');
+    const mischiefBtn = document.getElementById('mischief-managed-btn');
     const heartPage = document.getElementById('heart-page');
     const heartContainer = document.getElementById('heart-container');
     const huntContainer = document.querySelector('.hunt-container');
@@ -48,12 +50,14 @@ document.addEventListener('DOMContentLoaded', () => {
             feedbackMsg.classList.add('hidden');
             clueContainer.classList.remove('hidden');
             successContainer.classList.add('hidden');
+            sideQuestContainer.classList.add('hidden');
             finalContainer.classList.add('hidden');
             heartPage.classList.add('hidden');
             huntContainer.classList.remove('hidden');
         } else {
             clueContainer.classList.add('hidden');
             successContainer.classList.add('hidden');
+            sideQuestContainer.classList.add('hidden');
             finalContainer.classList.remove('hidden');
         }
     }
@@ -79,6 +83,16 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     nextClueBtn.addEventListener('click', () => {
+        if (currentClueIndex === 0) {
+            successContainer.classList.add('hidden');
+            sideQuestContainer.classList.remove('hidden');
+        } else {
+            currentClueIndex++;
+            showClue();
+        }
+    });
+
+    mischiefBtn.addEventListener('click', () => {
         currentClueIndex++;
         showClue();
     });
