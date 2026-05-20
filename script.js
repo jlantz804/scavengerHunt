@@ -1,6 +1,18 @@
 document.addEventListener('DOMContentLoaded', () => {
     const clues = [
         {
+            riddle: "A house of stories, quiet and grand, where knowledge of the world is at your hand. We're here to browse, but not to buy. What are we visiting?",
+            answer: "library",
+            activity: "Library Exploration",
+            place: "Manitowoc Public Library"
+        },
+        {
+            riddle: "Next we seek a treat so sweet, on a historic downtown street. Chocolates, ice cream, and candy galore, step inside this vintage store. What's for dessert?",
+            answer: "dessert",
+            activity: "Dessert & Downtown Exploration",
+            place: "Beerntsen's Confectionary"
+        },
+        {
             riddle: "When the sun goes down and your stomach starts to growl, we head to a kitchen where the cocktails are top-shelf. What are we having?",
             answer: "dinner",
             activity: "Dinner and Cocktails",
@@ -11,12 +23,6 @@ document.addEventListener('DOMContentLoaded', () => {
             answer: "sunset",
             activity: "Watching the Sunset",
             place: "Bayshore Trail"
-        },
-        {
-            riddle: "Ten pins stand in a silent row, waiting for the ball you throw. At Meadow Lanes West, we'll take our aim, to see who wins this classic game. What are we doing?",
-            answer: "bowling",
-            activity: "Bowling Night",
-            place: "Meadow Lanes West"
         }
     ];
 
