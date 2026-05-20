@@ -3,11 +3,11 @@ document.addEventListener('DOMContentLoaded', () => {
         {
             riddle: "A house of stories, quiet and grand, where knowledge of the world is at your hand. We're here to browse, but not to buy. What are we visiting?",
             answer: "library",
-            activity: "Library Exploration",
+            activity: "Library Exploration and Downtown Stroll",
             place: "Manitowoc Public Library"
         },
         {
-            riddle: "Next we seek a treat so sweet, on a historic downtown street. Chocolates, ice cream, and candy galore, step inside this vintage store. What's for dessert?",
+            riddle: "Next we seek a treat so sweet, on a historic downtown street. Chocolates, ice cream, and candy galore, step inside this vintage store. What are we getting?",
             answer: "dessert",
             activity: "Dessert & Downtown Exploration",
             place: "Beerntsen's Confectionary"
