@@ -1,12 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     const clues = [
         {
-            riddle: "I have many aisles but no wings, I'm where you go to buy all the things. Walk through the heart of the city to find your next treasure. What are we doing?",
-            answer: "shopping",
-            activity: "Shopping Adventure",
-            place: "Downtown Manitowoc"
-        },
-        {
             riddle: "When the sun goes down and your stomach starts to growl, we head to a kitchen where the cocktails are top-shelf. What are we having?",
             answer: "dinner",
             activity: "Dinner and Cocktails",
@@ -17,6 +11,12 @@ document.addEventListener('DOMContentLoaded', () => {
             answer: "sunset",
             activity: "Watching the Sunset",
             place: "Bayshore Trail"
+        },
+        {
+            riddle: "Ten pins stand in a silent row, waiting for the ball you throw. At Meadow Lanes West, we'll take our aim, to see who wins this classic game. What are we doing?",
+            answer: "bowling",
+            activity: "Bowling Night",
+            place: "Meadow Lanes West"
         }
     ];
 
