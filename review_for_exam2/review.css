@@ -1,0 +1,116 @@
+/* 
+   CSS Variables (:root): 
+   Allows for central management of colors and reusable values. 
+   Syntax: --variable-name: value; 
+   Usage: var(--variable-name);
+*/
+:root {
+    --primary-color: #3498db;
+    --secondary-color: #2ecc71;
+    --dark-color: #333;
+    --light-color: #f4f4f4;
+}
+
+/* Base Styles: Resetting default margins and setting global fonts */
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background-color: var(--light-color);
+}
+
+header {
+    background-color: var(--dark-color);
+    color: white;
+    padding: 1rem;
+    text-align: center;
+}
+
+/* Navigation: Styling list items to appear horizontally */
+nav ul {
+    list-style-type: none; /* Removes bullets */
+    padding: 0;
+}
+
+nav ul li {
+    display: inline; /* Makes items sit side-by-side */
+    margin-right: 15px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none; /* Removes underlines from links */
+}
+
+/* Layout - CSS Grid: Used for the main structure */
+main {
+    max-width: 800px;
+    margin: 2rem auto; /* Centers the container */
+    padding: 1rem;
+    display: grid;
+    grid-template-columns: 1fr; /* Single column layout */
+    gap: 2rem; /* Spacing between grid items */
+}
+
+/* Card Styling: Reusable component style */
+.card {
+    background-color: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1); /* Subtle depth effect */
+}
+
+/* Layout - Flexbox: Used for items within a card */
+.flex-container {
+    display: flex;
+    justify-content: space-between; /* Spreads items to edges */
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.box {
+    flex: 1; /* Allows boxes to grow and fill equal space */
+    padding: 1rem;
+    background-color: var(--primary-color);
+    color: white;
+    text-align: center;
+    border-radius: 4px;
+}
+
+/* Interactivity: Styling buttons and hover states */
+button {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    cursor: pointer; /* Changes mouse icon on hover */
+    border-radius: 4px;
+    transition: background-color 0.3s; /* Smooth color change */
+}
+
+button:hover {
+    background-color: #2980b9; /* Darker shade on hover */
+}
+
+/* Visibility Classes: Used by JavaScript to show/hide elements */
+.loading-hidden, .error-hidden {
+    display: none;
+}
+
+.loading-visible, .error-visible {
+    display: block;
+}
+
+.error-visible {
+    color: #e74c3c;
+    font-weight: bold;
+}
+
+/* Responsive Design (Media Queries): 
+   Changes layout behavior on smaller screens */
+@media (max-width: 600px) {
+    .flex-container {
+        flex-direction: column; /* Stack flex items vertically on mobile */
+    }
+}

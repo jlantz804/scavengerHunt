@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Metadata: Tells the browser about the page character encoding and viewport for responsiveness -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Development Semester Review</title>
+    <!-- Link tag: Connects the external CSS stylesheet -->
+    <link rel="stylesheet" href="review.css">
+</head>
+<body>
+    <!-- Semantic Header: Contains navigational links and branding -->
+    <header>
+        <h1>Web Development Review</h1>
+        <nav>
+            <ul>
+                <!-- Internal links using IDs as anchors -->
+                <li><a href="#html-css">HTML & CSS</a></li>
+                <li><a href="#javascript">JavaScript</a></li>
+                <li><a href="#api">API & Requests</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Semantic Main: The primary content of the document -->
+    <main>
+        <!-- HTML & CSS Section: Reviewing layout and semantics -->
+        <section id="html-css">
+            <h2>1. HTML & CSS Fundamentals</h2>
+            <div class="card">
+                <h3>Semantic Elements & Layout</h3>
+                <p>This page uses semantic tags like <code>&lt;header&gt;</code>, <code>&lt;main&gt;</code>, and <code>&lt;section&gt;</code>.</p>
+                <!-- Flex container: Demonstrates CSS Flexbox usage -->
+                <div class="flex-container">
+                    <div class="box">Flex Box 1</div>
+                    <div class="box">Flex Box 2</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- JavaScript Section: Reviewing DOM manipulation and events -->
+        <section id="javascript">
+            <h2>2. JavaScript & DOM</h2>
+            <div class="card">
+                <h3>Event Handling</h3>
+                <!-- IDs: Essential for selecting elements in JavaScript -->
+                <p id="counter-text">Counter: 0</p>
+                <button id="increment-btn">Increment Counter</button>
+            </div>
+        </section>
+
+        <!-- API Section: Reviewing asynchronous fetch requests -->
+        <section id="api">
+            <h2>3. APIs (Request/Response)</h2>
+            <div class="card">
+                <h3>Fetch API Data</h3>
+                <button id="fetch-btn">Fetch User Data</button>
+                <!-- Result container: Initially hidden via CSS classes -->
+                <div id="api-result" class="loading-hidden">
+                    <p><strong>Name:</strong> <span id="user-name"></span></p>
+                    <p><strong>Email:</strong> <span id="user-email"></span></p>
+                </div>
+                <!-- Error display: Placeholder for network or API errors -->
+                <p id="error-message" class="error-hidden"></p>
+            </div>
+        </section>
+    </main>
+
+    <!-- Semantic Footer: Typical place for copyright and minor links -->
+    <footer>
+        <p>&copy; 2024 Web Dev Review Guide</p>
+    </footer>
+
+    <!-- Script tag: Placed at bottom so HTML loads before JS executes -->
+    <script src="review.js"></script>
+</body>
+</html>

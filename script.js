@@ -1,138 +1,118 @@
-const questions = [
-    "Financial Support?",
-    "Driving skills?",
-    "Passenger Princess skills?",
-    "Frequency of flowers?",
-    "Frequency of affection?",
-    "Frequency of head/sex?",
-    "Quality of flowers?",
-    "Quality of affection?",
-    "Quality of head/sex?",
-    "Mood?",
-    "Emotional Support?",
-    "Playlist quality?",
-    "Does he notice the small things?",
-    "Does he notice the big things?",
-    "Does he notice things?",
-    "Official review of Boyfriend (short answer)",
-    "Final notes for Boyfriend (short answer)"
-];
-//updated questions array to include short answer questions at the end, and removed the "overall rating" question since it was redundant with the final verdict.
-let currentQuestionIndex = 0;
-let ratings = [];
-let noClickCount = 0;
-
-const questionText = document.getElementById('question-text');
-const questionContainer = document.getElementById('question-container');
-const finalContainer = document.getElementById('final-container');
-const surpriseContainer = document.getElementById('surprise-container');
-const successContainer = document.getElementById('success-container');
-const generateReportBtn = document.getElementById('generate-report-btn');
-const resultsSummary = document.getElementById('results-summary');
-const yesBtn = document.getElementById('yes-btn');
-const noBtn = document.getElementById('no-btn');
-const resetBtn = document.getElementById('reset-btn');
-
-const scoreButtons = document.getElementById('score-buttons');
-const shortAnswerContainer = document.getElementById('short-answer-container');
-const shortAnswerInput = document.getElementById('short-answer-input');
-const submitShortAnswerBtn = document.getElementById('submit-short-answer-btn');
-
-function showQuestion() {
-    if (currentQuestionIndex < questions.length) {
-        const question = questions[currentQuestionIndex];
-        questionText.textContent = `CRITERION ${currentQuestionIndex + 1}: ${question}`;
-        
-        if (question.includes("(short answer)")) {
-            scoreButtons.classList.add('hidden');
-            shortAnswerContainer.classList.remove('hidden');
-            shortAnswerInput.value = "";
-        } else {
-            scoreButtons.classList.remove('hidden');
-            shortAnswerContainer.classList.add('hidden');
+document.addEventListener('DOMContentLoaded', () => {
+    const clues = [
+        {
+            riddle: "I have many aisles but no wings, I'm where you go to buy all the things. Walk through the heart of the city to find your next treasure. What are we doing?",
+            answer: "shopping",
+            activity: "Shopping Adventure",
+            place: "Downtown Manitowoc"
+        },
+        {
+            riddle: "When the sun goes down and your stomach starts to growl, we head to a kitchen where the cocktails are top-shelf. What are we having?",
+            answer: "dinner",
+            activity: "Dinner and Cocktails",
+            place: "KC Kitchen and Cocktails"
+        },
+        {
+            riddle: "At the end of the day, when the sky turns to gold, we walk the trail by the water to watch the day grow old. What are we watching?",
+            answer: "sunset",
+            activity: "Watching the Sunset",
+            place: "Bayshore Trail"
         }
-    } else {
-        questionContainer.classList.add('hidden');
-        finalContainer.classList.remove('hidden');
+    ];
+
+    let currentClueIndex = 0;
+
+    const clueTitle = document.getElementById('clue-title');
+    const clueText = document.getElementById('clue-text');
+    const answerInput = document.getElementById('answer-input');
+    const submitBtn = document.getElementById('submit-btn');
+    const feedbackMsg = document.getElementById('feedback-msg');
+    const clueContainer = document.getElementById('clue-container');
+    const successContainer = document.getElementById('success-container');
+    const activityRevealed = document.getElementById('activity-revealed');
+    const placeRevealed = document.getElementById('place-revealed');
+    const nextClueBtn = document.getElementById('next-clue-btn');
+    const finalContainer = document.getElementById('final-container');
+    const restartBtn = document.getElementById('restart-btn');
+    const completeHuntBtn = document.getElementById('complete-hunt-btn');
+    const heartPage = document.getElementById('heart-page');
+    const heartContainer = document.getElementById('heart-container');
+    const huntContainer = document.querySelector('.hunt-container');
+
+    function showClue() {
+        if (currentClueIndex < clues.length) {
+            const clue = clues[currentClueIndex];
+            clueTitle.textContent = `CLUE #${currentClueIndex + 1}`;
+            clueText.textContent = clue.riddle;
+            answerInput.value = "";
+            feedbackMsg.classList.add('hidden');
+            clueContainer.classList.remove('hidden');
+            successContainer.classList.add('hidden');
+            finalContainer.classList.add('hidden');
+            heartPage.classList.add('hidden');
+            huntContainer.classList.remove('hidden');
+        } else {
+            clueContainer.classList.add('hidden');
+            successContainer.classList.add('hidden');
+            finalContainer.classList.remove('hidden');
+        }
     }
-}
 
-document.querySelectorAll('.rate-btn').forEach(btn => {
-    btn.addEventListener('click', (e) => {
-        const score = e.target.getAttribute('data-score');
-        ratings.push({
-            criterion: questions[currentQuestionIndex],
-            score: score
-        });
-        currentQuestionIndex++;
-        showQuestion();
+    submitBtn.addEventListener('click', () => {
+        const userAnswer = answerInput.value.trim().toLowerCase();
+        const currentClue = clues[currentClueIndex];
+
+        if (userAnswer === currentClue.answer) {
+            showSuccess(currentClue);
+        } else {
+            feedbackMsg.textContent = "Incorrect. The treasure remains hidden. Try again!";
+            feedbackMsg.classList.remove('hidden');
+            feedbackMsg.style.color = "#b71c1c";
+        }
     });
-});
 
-submitShortAnswerBtn.addEventListener('click', () => {
-    const answer = shortAnswerInput.value.trim() || "N/A";
-    ratings.push({
-        criterion: questions[currentQuestionIndex],
-        score: answer
-    });
-    currentQuestionIndex++;
-    showQuestion();
-});
-
-generateReportBtn.addEventListener('click', () => {
-    finalContainer.classList.add('hidden');
-    surpriseContainer.classList.remove('hidden');
-});
-
-yesBtn.addEventListener('click', () => {
-    surpriseContainer.classList.add('hidden');
-    successContainer.classList.remove('hidden');
-    displaySummary();
-});
-
-function displaySummary() {
-    let summaryHTML = "<h3>OFFICIAL PERFORMANCE LOG SUMMARY</h3><ul class='results-list'>";
-    
-    ratings.forEach((r, i) => {
-        const isShortAnswer = r.criterion.includes("(short answer)");
-        const scoreValue = isShortAnswer ? r.score : `${r.score}/3`;
-        summaryHTML += `<li><strong>${r.criterion}</strong>: ${scoreValue}</li>`;
-    });
-    
-    summaryHTML += "</ul>";
-    summaryHTML += "<p class='final-verdict'>FINAL VERDICT: I CHOOSE YOU ❤️</p>";
-    
-    resultsSummary.innerHTML = summaryHTML;
-}
-
-noBtn.addEventListener('click', () => {
-    noClickCount++;
-    if (noClickCount <= 3) {
-        const yesScale = 1 + (noClickCount * 0.5);
-        const noScale = 1 - (noClickCount * 0.2);
-        yesBtn.style.transform = `scale(${yesScale})`;
-        noBtn.style.transform = `scale(${noScale})`;
-    } else {
-        const x = Math.random() * (window.innerWidth - noBtn.offsetWidth);
-        const y = Math.random() * (window.innerHeight - noBtn.offsetHeight);
-        noBtn.style.position = 'fixed';
-        noBtn.style.left = `${x}px`;
-        noBtn.style.top = `${y}px`;
+    function showSuccess(clue) {
+        clueContainer.classList.add('hidden');
+        successContainer.classList.remove('hidden');
+        activityRevealed.innerHTML = `<strong>Activity:</strong> ${clue.activity}`;
+        placeRevealed.innerHTML = `<strong>Location:</strong> ${clue.place}`;
     }
-    noBtn.textContent = "NON-COMPLIANCE DETECTED";
-});
 
-resetBtn.addEventListener('click', () => {
-    currentQuestionIndex = 0;
-    ratings = [];
-    noClickCount = 0;
-    yesBtn.style.transform = 'scale(1)';
-    noBtn.style.transform = 'scale(1)';
-    noBtn.style.position = 'static';
-    noBtn.textContent = 'DECLINE (NON-COMPLIANCE)';
-    successContainer.classList.add('hidden');
-    questionContainer.classList.remove('hidden');
-    showQuestion();
-});
+    nextClueBtn.addEventListener('click', () => {
+        currentClueIndex++;
+        showClue();
+    });
 
-showQuestion();
+    completeHuntBtn.addEventListener('click', () => {
+        if (confirm("Are you sure you have completed the treasure hunt?")) {
+            showHeartPage();
+        }
+    });
+
+    function showHeartPage() {
+        huntContainer.classList.add('hidden');
+        heartPage.classList.remove('hidden');
+        heartContainer.innerHTML = '';
+        
+        for (let i = 0; i < 30; i++) {
+            const span = document.createElement('span');
+            span.textContent = 'i love you';
+            span.className = 'heart-text';
+            span.style.animationDelay = `${(i / 20) * -10}s`;
+            heartContainer.appendChild(span);
+        }
+    }
+
+    restartBtn.addEventListener('click', () => {
+        currentClueIndex = 0;
+        showClue();
+    });
+
+    answerInput.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') {
+            submitBtn.click();
+        }
+    });
+
+    showClue();
+});

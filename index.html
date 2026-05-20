@@ -3,84 +3,56 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Boyfriend Performance Evaluation - Form B-101</title>
+    <title>Manitowoc Scavenger Hunt</title>
     <link rel="stylesheet" href="style.css">
 </head>
-<body class="official-theme">
-    <div class="watermark">CONFIDENTIAL</div>
+<body class="hunt-theme">
+    <div class="map-overlay"></div>
     
-    <div class="doc-container">
+    <div class="hunt-container">
         <header>
-            <div class="header-left">
-                <p>U.S. DEPARTMENT OF BOYFRIEND EVALUATION</p>
-                <p>OFFICE OF ROMANTIC PERFORMANCE STANDARDS</p>
-                <p>WASHINGTON, D.C. 2026</p>
-            </div>
-            <div class="header-right">
-                <p>FORM ID: B-101-REV</p>
-                <p>CASE FILE: #4-20-2026</p>
-            </div>
+            <h1>THE GREAT MANITOWOC SCAVENGER HUNT</h1>
+            <p class="subtitle">Decipher the clues to reveal your next destination</p>
         </header>
 
-        <div class="title-block">
-            <h1>OFFICIAL PERFORMANCE EVALUATION REPORT</h1>
-            <p>SUBJECT: JOEY (EMPLOYEE ID: 001)</p>
-            <p>EVALUATOR: BRINLEIGH</p>
-        </div>
-
-        <div class="container" id="question-container">
-            <div class="section-label">SECTION I: QUANTITATIVE ASSESSMENT</div>
-            <h2 id="question-text">INITIALIZING ASSESSMENT...</h2>
-            <div class="rating-group">
-                <div id="score-buttons">
-                    <p>Assign performance rating for current criterion:</p>
-                    <div class="button-group">
-                        <button class="rate-btn" data-score="1">1 - Needs Improvement</button>
-                        <button class="rate-btn" data-score="2">2 - Satisfactory</button>
-                        <button class="rate-btn" data-score="3">3 - Exceptional</button>
-                    </div>
-                </div>
-                <div id="short-answer-container" class="hidden">
-                    <p>Provide detailed assessment:</p>
-                    <textarea id="short-answer-input" rows="4" cols="40" placeholder="ENTER EVALUATION HERE..."></textarea>
-                    <br>
-                    <button id="submit-short-answer-btn">SUBMIT ENTRY</button>
-                </div>
+        <div class="clue-box" id="clue-container">
+            <h2 id="clue-title">CLUE #1</h2>
+            <p id="clue-text">INITIALIZING QUEST...</p>
+            
+            <div class="input-group">
+                <input type="text" id="answer-input" placeholder="Enter your answer..." autocomplete="off">
+                <button id="submit-btn">REVEAL DESTINATION</button>
             </div>
+            
+            <p id="feedback-msg" class="hidden"></p>
         </div>
 
-        <div class="container hidden" id="final-container">
-            <div class="section-label">SECTION II: FINAL DETERMINATION</div>
-            <h2>ASSESSMENT COMPLETE</h2>
-            <p>No further choices are required. Determination has been finalized.</p>
-            <p class="official-stamp">FINAL VERDICT: I CHOOSE YOU ❤️</p>
-            <button id="generate-report-btn">GENERATE OFFICIAL REPORT</button>
-        </div>
-
-        <div class="container hidden" id="surprise-container">
-            <div class="section-label">SECTION III: MANDATORY DIRECTIVE</div>
-            <h1>DIRECTIVE: RANDOM BULLSHIT</h1>
-            <p>YOU ARE HEREBY SUMMONED TO PARTICIPATE IN SOME RANDOM BULLSHIT AT AN UNDISCLOSED LOCATION.</p>
-            <p>PROTOCOL: BRING YOUR OWN BEVERAGE AND A SENSE OF ADVENTURE.</p>
-            <div class="button-group" id="date-buttons">
-                <button id="yes-btn">ACKNOWLEDGE & COMPLY</button>
-                <button id="no-btn">DECLINE (NON-COMPLIANCE)</button>
+        <div class="success-box hidden" id="success-container">
+            <h2 id="success-title">DESTINATION REVEALED!</h2>
+            <div id="destination-info">
+                <p id="activity-revealed"></p>
+                <p id="place-revealed"></p>
             </div>
+            <button id="next-clue-btn">NEXT CLUE</button>
         </div>
 
-        <div class="container hidden" id="success-container">
-            <h1 class="stencil-font">STATUS: CONFIRMED</h1>
-            <div id="results-summary">
-                <!-- Results will be injected here -->
-            </div>
-            <p class="screenshot-msg">Please send a screenshot of this official report to the developer. If you are comfortable with your survey being analyzed for science stuff.</p>
-            <button id="reset-btn" class="reset-link">RE-INITIALIZE FORM</button>
+        <div class="final-box hidden" id="final-container">
+            <h2>QUEST COMPLETE</h2>
+            <p>You have mastered the streets of Manitowoc!</p>
+            <button id="complete-hunt-btn">COMPLETED TREASURE HUNT</button>
+            <br>
+            <button id="restart-btn" class="secondary-btn">START OVER</button>
         </div>
 
         <footer>
-            <p>WARNING: Unauthorized access to this document is a violation of Romantic Protocol 84-B.</p>
-            <p>PAGE 1 OF 1</p>
+            <p>&copy; 2026 Manitowoc Adventure Guild</p>
         </footer>
+    </div>
+
+    <div class="heart-page hidden" id="heart-page">
+        <div class="heart-container" id="heart-container">
+            <!-- 15 "i love you" texts will be injected here -->
+        </div>
     </div>
 
     <script src="script.js"></script>
